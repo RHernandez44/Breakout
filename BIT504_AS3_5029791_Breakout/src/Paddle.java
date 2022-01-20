@@ -27,20 +27,13 @@ public class Paddle extends Sprite {
 		
 		// TODO: Prevent the paddle from moving outside of the screen  	???
 		// This can be done using two if statements (one for the left side of the screen and one for the right)
-		
-		if( getY() >= ( Paddle.this.getHeight()- getWidth() ) )
-	    {
-	        setY(Paddle.this.getHeight() - getWidth());
-	    }
-		if( getX() >= ( Paddle.this.getWidth()- getWidth() ) )
-		{
-			setX(Paddle.this.getWidth() - getWidth());
-		}
 
 	}
 	
 	public void paint(Graphics g) {
 		g.fillRect(x, y, Settings.PADDLE_WIDTH, Settings.PADDLE_HEIGHT);
+		System.out.println(x);
+		System.out.println(y);
 	}
 	
 	public void setXVelocity(int vel) {

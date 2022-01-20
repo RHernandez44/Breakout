@@ -6,9 +6,13 @@ public class Ball extends Sprite {
 	
 	// Constructor
 	public Ball() {
-		// TODO: Set width to Settings.BALL_WIDTH
-		// TODO: Set width to Settings.BALL_HEIGHT
-		// TODO: Call resetPosition
+		// TODO: Set width to Settings.BALL_WIDTH		DONE
+		// TODO: Set width to Settings.BALL_HEIGHT		DONE
+		// TODO: Call resetPosition						DONE
+		
+		setWidth(Settings.BALL_WIDTH);
+		setHeight(Settings.BALL_HEIGHT);
+		resetPosition();
 	}
 	
 	/**
@@ -16,8 +20,10 @@ public class Ball extends Sprite {
 	 * Uses Settings.INITIAL_BALL_X/Y to set the position of the ball
 	 */
 	public void resetPosition() {
+		// TODO: Set the balls y by using the INITIAL_BALL_Y (see above)		DONE
+
 		setX(Settings.INITIAL_BALL_X);
-		// TODO: Set the balls y by using the INITIAL_BALL_Y (see above)
+		setY(Settings.INITIAL_BALL_Y);
 	}
 	
 	public void update() {

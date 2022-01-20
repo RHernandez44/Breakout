@@ -5,9 +5,15 @@ public class Brick extends Sprite {
 	private boolean broken = false;
 	
 	public Brick(int x, int y) {
-		// TODO: Set x using the parameter
-		// TODO: Set y using the parameter
-		// TODO: Set the width and height of the brick using Settings.BRICK_WIDTH/HEIGHT
+		// TODO: Set x using the parameter													DONE
+		// TODO: Set y using the parameter													DONE
+		// TODO: Set the width and height of the brick using Settings.BRICK_WIDTH/HEIGHT	DONE
+
+		setX(x);
+		setY(y);
+		setWidth(Settings.BRICK_WIDTH);
+		setHeight(Settings.BRICK_HEIGHT);
+		
 	}
 
 	public boolean isBroken() {

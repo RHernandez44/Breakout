@@ -19,7 +19,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	private String screenMessage = "";
 	private Ball ball;
 	private Paddle paddle;
-	private Brick bricks[];
+	private Brick bricks;
 	
 	public BreakoutPanel(Breakout game) {	//Constructor
 		
@@ -29,16 +29,18 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		Timer timer = new Timer(5, this);
 		timer.start();
 		
-		// TODO: Create a new ball object and assign it to the appropriate variable
-		// TODO: Create a new paddle object and assign it to the appropriate variable
+		// TODO: Create a new ball object and assign it to the appropriate variable		DONE
+		// TODO: Create a new paddle object and assign it to the appropriate variable	DONE
+		// TODO: Call the createBricks() method											DONE
+
 		// TODO: Create a new bricks array (Use Settings.TOTAL_BRICKS)
-		// TODO: Call the createBricks() method		DONE
 		
 		ball = new Ball();
 		paddle = new Paddle();
-		bricks[Settings.TOTAL_BRICKS] = new Brick( 10, 10); // TODO: edit x & y variables
+
+		int[] bricks = new int[Settings.TOTAL_BRICKS];
 		createBricks();
-		
+				
 	}
 	
 	private void createBricks() {
@@ -57,25 +59,36 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	}
 	
 	private void paintBricks(Graphics g) {
-		// TODO: Loop through the bricks and call the paint() method
+		
+		// TODO: Loop through the bricks and call the paint() method 
+		
+		for (int j = 0; j < Settings.TOTAL_BRICKS; j++) {
+			paint(g);										// TODO: paint() method ??
+		}
+		
 	}
 	
 	private void update() {
 		if(gameRunning) {
-			// TODO: Update the ball and paddle
 			
+			// TODO: Update the ball and paddle		DONE
+			
+			ball.update();
+			paddle.update();
 			collisions();
 			repaint();
 		}
 	}
 	
 	private void gameOver() {
-		// TODO: Set screen message
+		// TODO: Set screen message		DONE
+		screenMessage = "YOU LOST";
 		stopGame();
 	}
 	
 	private void gameWon() {
-		// TODO: Set screen message
+		// TODO: Set screen message		DONE
+		screenMessage = "YOU WON";
 		stopGame();
 	}
 	
@@ -156,9 +169,17 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         ball.paint(g);
         paddle.paint(g);
         paintBricks(g);
-        
+
         // Draw lives left
-        // TODO: Draw lives left in the top left hand corner
+        // TODO: Draw lives left in the top left hand corner	DONE
+
+        int fontSize = 50; // sets font & fontsize
+        Font livesLeftFont = new Font("Serif", Font.BOLD, fontSize);
+        g.setFont(livesLeftFont);
+        
+        String livesLeftStr = Integer.toString(livesLeft);	// Sets Lives left to String and paints onscreen
+        g.drawString(livesLeftStr, Settings.LIVES_POSITION_X, Settings.LIVES_POSITION_Y);
+        
         
         // Draw screen message
         if(screenMessage != null) {

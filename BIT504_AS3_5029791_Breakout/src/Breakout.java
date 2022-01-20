@@ -12,11 +12,11 @@ public class Breakout extends JFrame{
 	private BreakoutPanel panel;
 	
 	public Breakout() {
-		// TODO: Set the size of the screen (use Settings.WINDOW_WIDTH/HEIGHT) DONE
-		// TODO: Set the title	DONE
-		// TODO: Set resizable to false		DONE
-		// TODO: Set visible to true	DONE
-		// TODO: Set the background colour to white		DONE
+		// TODO: Set the size of the screen (use Settings.WINDOW_WIDTH/HEIGHT) 	DONE
+		// TODO: Set the title													DONE
+		// TODO: Set resizable to false											DONE
+		// TODO: Set visible to true											DONE
+		// TODO: Set the background colour to white								DONE
 
 		setBackground(BACKGROUND_COLOUR);
 		setTitle(Settings.WINDOW_NAME); // Title bar text

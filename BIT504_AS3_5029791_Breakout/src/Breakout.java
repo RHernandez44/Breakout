@@ -3,7 +3,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 public class Breakout extends JFrame{
-	
+		
 	static final long serialVersionUID = 1L;
 	
 	private BreakoutPanel panel;

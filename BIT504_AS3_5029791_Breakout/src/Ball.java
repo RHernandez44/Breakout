@@ -6,9 +6,6 @@ public class Ball extends Sprite {
 	
 	// Constructor
 	public Ball() {
-		// TODO: Set width to Settings.BALL_WIDTH		DONE
-		// TODO: Set width to Settings.BALL_HEIGHT		DONE
-		// TODO: Call resetPosition						DONE
 		
 		setWidth(Settings.BALL_WIDTH);
 		setHeight(Settings.BALL_HEIGHT);
@@ -20,48 +17,48 @@ public class Ball extends Sprite {
 	 * Uses Settings.INITIAL_BALL_X/Y to set the position of the ball
 	 */
 	public void resetPosition() {
-		// TODO: Set the balls y by using the INITIAL_BALL_Y (see above)		DONE
-
 		setX(Settings.INITIAL_BALL_X);
 		setY(Settings.INITIAL_BALL_Y);
 	}
 	
 	public void update() {
 		x += xVelocity;
-		// TODO: Increase the y variable by yVelocity (see above)
+		y += yVelocity;
 		
 		// Bounce off left side of screen
 		if(x <= 0) {
-			// TODO: Set x to 0 so it does not leave the screen
-			// TODO: Change the x velocity to make the ball go right
+			x = 0;
+			xVelocity = -xVelocity;
 		}
 		
 		// Bounce off right side of screen
-		if(x >= Settings.WINDOW_WIDTH - Settings.BALL_WIDTH) {
-			// TODO: Set x to the right edge of the screen (see the above if condition)
-			// TODO: Change the x velocity to make the ball go left
+		if(x >= Settings.WINDOW_WIDTH - (Settings.BALL_WIDTH + 10)) {
+			x = Settings.WINDOW_WIDTH - (Settings.BALL_WIDTH + 10);
+			xVelocity = -xVelocity;
 		}
 		
 		// Bounce off top of screen
 		if(y <= 0) {
-			// TODO: Set y to 0 so it does not leave the screen
-			// TODO: Change the y velocity to make the ball go downward
+			y = 0;
+			yVelocity = -yVelocity;
 		}
 		
 	}
 	
 	public void setXVelocity(int x) {
-		// TODO: Set the x velocity
+		// TODO: Set the x velocity						DONE
+		this.xVelocity = x;
 	}
 	public void setYVelocity(int y) {
-		// TODO: Set the y velocity
+		// TODO: Set the y velocity						DONE
+		this.yVelocity = y;
 	}
 	
 	public int getXVelocity() {
-		return 0;	// TODO: Return the x velocity
+		return x;	// TODO: Return the x velocity		DONE
 	}
 	public int getYVelocity() {
-		return 0;	// TODO: Return the y velocity
+		return y;	// TODO: Return the y velocity		DONE
 	}
 	
 	public void paint(Graphics g) {

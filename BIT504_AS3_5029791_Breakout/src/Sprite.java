@@ -18,18 +18,17 @@ public class Sprite {
 		this.height = height;
 	}
 	
-	// Note: Change the "0" to the correct variable
 	public int getX() { 
-		return x;	// TODO: Return correct value		DONE
+		return x;
 	}
 	public int getY() { 
-		return y;	// TODO: Return correct value		DONE
+		return y;
 	}
 	public int getWidth() { 
-		return width;	// TODO: Return correct value	DONE
+		return width;
 	}
 	public int getHeight() { 
-		return height;	// TODO: Return correct value	DONE
+		return height;
 	}
 	
 	Rectangle getRectangle() {

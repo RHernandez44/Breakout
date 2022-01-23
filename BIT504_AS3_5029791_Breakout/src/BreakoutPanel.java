@@ -21,18 +21,19 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	private Paddle paddle;
 	private Brick bricks[];
 	
-	public BreakoutPanel(Breakout game) {
+	public BreakoutPanel(Breakout game) {	//Constructor
 		
 		addKeyListener(this);
 		setFocusable(true);
 		
 		Timer timer = new Timer(5, this);
 		timer.start();
-		
-		// TODO: Create a new ball object and assign it to the appropriate variable
-		// TODO: Create a new paddle object and assign it to the appropriate variable
-		// TODO: Create a new bricks array (Use Settings.TOTAL_BRICKS)
-		// TODO: Call the createBricks() method
+				
+		ball = new Ball();
+		paddle = new Paddle();
+		bricks = new Brick[Settings.TOTAL_BRICKS];
+		createBricks();
+				
 	}
 	
 	private void createBricks() {
@@ -50,25 +51,21 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		}
 	}
 	
-	private void paintBricks(Graphics g) {
-		// TODO: Loop through the bricks and call the paint() method
-	}
-	
 	private void update() {
 		if(gameRunning) {
-			// TODO: Update the ball and paddle
+			ball.update();
+			paddle.update();
 			collisions();
-			repaint();
 		}
 	}
 	
-	private void gameOver() {
-		// TODO: Set screen message
+	private void gameOver() { // Sets screen message on loss
+		screenMessage = "YOU LOST";
 		stopGame();
 	}
 	
-	private void gameWon() {
-		// TODO: Set screen message
+	private void gameWon() { // Sets screen message on win
+		screenMessage = "YOU WON";
 		stopGame();
 	}
 	
@@ -106,9 +103,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		}
 		
 		// Check collisions
-		if(ball.getRectangle().intersects(paddle.getRectangle())) {
-			// Simplified touching of paddle
-			// Proper game would change angle of ball depending on where it hit the paddle
+		if(ball.getRectangle().intersects(paddle.getRectangle())) { // Checks if ball intersects with paddle
 			ball.setYVelocity(-1);
 		}
 		
@@ -149,9 +144,15 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         ball.paint(g);
         paddle.paint(g);
         paintBricks(g);
-        
+
         // Draw lives left
-        // TODO: Draw lives left in the top left hand corner
+        int fontSize = 50; // sets font & font size
+        Font livesLeftFont = new Font("Serif", Font.BOLD, fontSize);
+        g.setFont(livesLeftFont);
+        
+        String livesLeftStr = Integer.toString(livesLeft);	// Sets Lives left to String and paints onscreen
+        g.drawString(livesLeftStr, Settings.LIVES_POSITION_X, Settings.LIVES_POSITION_Y);
+        
         
         // Draw screen message
         if(screenMessage != null) {
@@ -160,15 +161,33 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         	g.drawString(screenMessage, (Settings.WINDOW_WIDTH / 2) - (messageWidth / 2), Settings.MESSAGE_POSITION);
         }
     }
+	
+	private void paintBricks(Graphics g) {		
+		// Loop through the bricks and call the paint() method 
+		for (Brick bricks1 : bricks ) {
+			bricks1.paint(g);
+		}
+		
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right
+		// Sets the velocity of the paddle depending on whether the player is pressing left or rigt
+		
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) { // Paddle Left/Right
+			paddle.setXVelocity(-2);
+		} else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			paddle.setXVelocity(2);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO: Set the velocity of the paddle after the player has released the keys
+		// Set the velocity of the paddle after the player has released the keys
+		
+		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) { // Paddle left/right
+            paddle.setXVelocity(0);
+        }
 	}
 
 	@Override
@@ -179,6 +198,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		update();
+		repaint();
 	}
 
 }

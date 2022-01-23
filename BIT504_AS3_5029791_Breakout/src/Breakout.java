@@ -1,22 +1,27 @@
 import java.awt.Color;
 
 import javax.swing.JFrame;
+import javax.swing.border.EmptyBorder;
 
 public class Breakout extends JFrame{
-		
+  
+	// Constant variables
+	private final static Color BACKGROUND_COLOUR = Color.WHITE;
 	static final long serialVersionUID = 1L;
 	
 	private BreakoutPanel panel;
 	
 	public Breakout() {
-		// TODO: Set the size of the screen (use Settings.WINDOW_WIDTH/HEIGHT)
-		// TODO: Set the title
-		// TODO: Set the background colour to white
-		// TODO: Set resizable to false
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		setBackground(BACKGROUND_COLOUR);
+		setTitle(Settings.WINDOW_NAME); // Title bar text
+		setSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+		setResizable(false);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
         panel = new BreakoutPanel(this);
         add(panel);
-		// TODO: Set visible to true
 	}
 
 	public static void main(String[] args) {

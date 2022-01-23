@@ -4,10 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
 public class Breakout extends JFrame{
-		
+  
 	// Constant variables
 	private final static Color BACKGROUND_COLOUR = Color.WHITE;
-	
 	static final long serialVersionUID = 1L;
 	
 	private BreakoutPanel panel;
